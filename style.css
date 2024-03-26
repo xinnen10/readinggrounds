@@ -1,3 +1,7 @@
+@font-face {
+    font-family: Whitney;
+    src: url('./fonts/whitney-book.otf') format("opentype");
+}
 /* 
 reset 
 */
@@ -37,6 +41,18 @@ VARS
     --light: #FDF4D9;
     --grey: #A7A99A;
     --satgrey: #D7CBB5;
+
+    --fs-biggest: 3.5rem;
+    --fs-big: 2rem;
+    --fs-normbig: 1.5rem;
+    --fs-normal: 1rem;
+    --fs-normsmall: 1.75rem;
+    --fs-small: 0.9375rem;
+    --fs-tiny: 0.875rem;
+
+    /* font-families */
+    --ff-serif: "source-serif-4-variable", sans-serif;
+    --ff-whitney: "Whitney"
 }
 .col{
     display: flex;
@@ -47,17 +63,33 @@ VARS
     flex-direction: row;
 }
 
-
-html {
+/*
+cursor
+*/
+body {
     cursor: none;
 }
-#circularcursor {
+#cursor {
     background-color: var(--dark);
     height:10px;
     width:10px;
     border-radius:50%;
     position: absolute;
     z-index: 1;
+}
+#cursor-ext{
+    background-color: transparent;
+    border: 1px solid #3D2318;
+    height:25px;
+    width:25px;
+    top: -5px;
+    border-radius:50%;
+    position: absolute;
+    z-index: 1;
+    transition: left 0.1s ease, top 0.1s ease;
+}
+body:not(:hover) #cursor, body:not(:hover) #cursor-ext {
+    display: none;
 }
 
 /*
@@ -91,9 +123,14 @@ navbar
     align-items: center;
 }
 .title{
-    font-size: 35px;
-    font-family: "source-serif-4-variable", sans-serif;
+    font-size: var(--fs-big);
+    font-family: var(--ff-serif);
     font-variation-settings: "opsz" 20, "wght" 100;
+}
+.bar-text{
+    font-size: 18px;
+    font-family: var(--ff-serif);
+    font-variation-settings: "wght" 350;
 }
 
 /*
