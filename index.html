@@ -56,8 +56,15 @@
         <div class="bead"></div>
       </div>
 
+      <div id="first-page" class="page" style="transform: rotateY(180deg);">
+        <div class="page-side back col" style="background-color: var(--dark)">
+          <div class="page-main-title">MENU</div>
+          <div class="page-main-text">meowmeow meow meow text</div>
+        </div>
+      </div>
+      
+      <!-- FIRST PAGE -->
       <div class="page active">
-        <!-- FIRST PAGE, FRONT -->
         <div class="page-side col front">
           <div class="page-header row">
             <div class="page-title">Expresso</div>
@@ -70,7 +77,6 @@
             <span class="page-no">1</span>
           </div>
         </div>
-        <!-- FIRST PAGE, BACK -->
         <div class="page-side col back">
           <div class="page-header row">
             <div class="page-title">Americano</div>
@@ -84,7 +90,6 @@
           </div>
         </div>
       </div>
-
       <!-- SECOND PAGE -->
       <div class="page">
         <div class="page-side col front">
@@ -112,7 +117,6 @@
           </div>
         </div>
       </div>
-
       <!-- THIRD PAGE -->
       <div class="page">
         <div class="page-side col front">
@@ -140,7 +144,6 @@
           </div>
         </div>
       </div>
-
       <!-- FOURTH PAGE -->
       <div class="page">
         <div class="page-side col front">
@@ -168,7 +171,6 @@
           </div>
         </div>
       </div>
-
       <!-- FIFTH PAGE -->
       <div class="page">
         <div class="page-side col front">
@@ -197,7 +199,11 @@
         </div>
       </div>
 
-      <div class="page"></div>
+      <div id="last-page" class="page">
+        <div class="page-side col front" style="background-color: var(--dark)">
+        </div>
+      </div>
+
     </div>
   </div>
   <div class="menu-controls">
@@ -213,11 +219,33 @@
 </div>
 
 <div id="books" class="section">
-  
+  <div class="books-title-container">
+    <div class="books-title">
+      <img src="/img/books-header.png">
+    </div>
+  </div>
+  <div class="books-content">
+    <div class="books-image">
+      add image here?> or what
+    </div>
+    <div class="books-text">
+      <p>Indulge in the richness of local literature while supporting homegrown talent with our curated selection of books by regional authors.</p>
+      <p>Unravel the mystery of your next read with our enticing selection of mystery-wrapped books, each page holding an adventure waiting to be discovered.</p>
+    </div>
+  </div>
 </div>
 
-<div id="contact" class="section" style="height: 60vh;">
+<div id="contact" class="section row" style="height: 60vh;">
   <img class="contact-img" src="/img/logo-L.png">
+  <div class="contact-container">
+    <div class="contact-text">
+      <div class="contact-title">Contact us!</div>
+      <p>Opening Hours: 10.30AM - 8PM <br>Monday - Sunday</p>
+      <p>Reading grounds, 326 Thomson Rd Singapore 307631</p>
+      <p>hello@readinggrounds.sg</p>
+      <p>+65 6254 8490</p>
+    </div>
+  </div>
 </div>
 
 <div id="cursor"></div>
@@ -237,14 +265,19 @@
   function previous(){
     let active = document.querySelector(".active")
     let prevSib = active.previousElementSibling 
-    active.className = "page"
-    prevSib.className = "page active"
-    setIndex()
-    prevSib.style.transform = "rotateY(0deg)"
 
-    let prevSib2 = prevSib.previousElementSibling
-    if (prevSib2 && prevSib2.className =="page"){
-      prevSib2.style.zIndex = "998"
+    if (prevSib && prevSib.id === "first-page"){
+      return;
+    } else{
+      active.className = "page"
+      prevSib.className = "page active"
+      setIndex()
+      prevSib.style.transform = "rotateY(0deg)"
+
+      let prevSib2 = prevSib.previousElementSibling
+      if (prevSib2 && prevSib2.className =="page"){
+        prevSib2.style.zIndex = "998"
+      }
     }
     
   }
@@ -252,14 +285,19 @@
   function next(){
     let active = document.querySelector(".active")
     let nextSib = active.nextElementSibling
-    active.style.transform = "rotateY(180deg)"
-    active.className = "page"
-    setIndex()
-    active.style.zIndex = "998"
-    if (nextSib){
-      nextSib.className = "page active"
-    } else{
-      active.className = "page active"
+
+    if (active && active.id === "last-page"){
+      return;
+    }else{
+      active.style.transform = "rotateY(180deg)"
+      active.className = "page"
+      setIndex()
+      active.style.zIndex = "998"
+      if (nextSib){
+        nextSib.className = "page active"
+      } else{
+        active.className = "page active"
+      }
     }
   }
 </script>
