@@ -64,12 +64,12 @@ VARS
   --white: #fff;
 
   --fs-biggest: 4rem;
+  --fs-bigdgest: 3rem;
   --fs-bigger: 2.5rem;
   --fs-big: 2rem;
   --fs-normbig: 1.5rem;
   --fs-normmid: 1.2rem;
   --fs-normal: 1rem;
-  --fs-normsmall: 1.75rem;
   --fs-small: 0.9375rem;
 
   /* font-families */
@@ -190,6 +190,7 @@ home page
   padding: 30px;
 }
 .home-img {
+  object-fit: contain;
   position: absolute;
   display: block;
   max-height: 80%;
@@ -203,11 +204,12 @@ home page
   margin: 10px 30px;
 }
 .home-title {
-  color: var(--dark);
+  color: #27140c;
   font-family: var(--ff-serif);
   font-size: var(--fs-biggest);
-  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
   line-height: 1.2;
+
 }
 .home-subtitle {
   color: rgba(0, 0, 0, 0.5);
@@ -230,7 +232,6 @@ home page
 menu
 */
 #menu {
-  padding-left: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -269,7 +270,7 @@ menu
   width: 405px;
   height: 250px;
   position: relative;
-  right: -210px;
+  right: -200px;
 }
 .menu-pages {
   width: 100%;
@@ -324,6 +325,8 @@ menu
 .page-title, .page-main-title {
   font-size: var(--fs-bigger);
   font-weight: 600;
+  line-height: 40px;
+  margin-top: 20px;
 }
 .page-price {
   font-size: var(--fs-normmid);
@@ -393,14 +396,14 @@ books
 .books-title-container {
   padding-top: 88px;
   width: 100%;
-  height: 28%;
+  height: 25%;
   display: flex;
   justify-content: end;
 }
 .books-title {
   height: 100%;
   width: 90%;
-  border-bottom: 10px solid var(--dark);
+  border-bottom: 8px solid var(--dark);
 }
 .books-title img {
   height: 100%;
@@ -416,34 +419,38 @@ books
   color: var(--dark);
   font-size: var(--fs-biggest);
   margin-left: 30px;
-  font-weight: 650;
-  line-height: 1;
+  font-weight: 400;
+  line-height: 0.65;
 }
 .books-content {
   width: 100%;
   height: 72%;
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 50px 100px;
+  flex-wrap: wrap-reverse;
 }
 .books-image{
-    flex:0.4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90%;
-    margin: 0px 50px;
+  flex: 1;
+  max-height: 65%;
+  width: auto;
+  margin: 0px 50px;
+  object-fit: contain;
 }
 .books-text {
+    min-width: 35%;
     padding: 30px;
-    flex:0.6;
+    flex: 1;
     color: var(--dark);
     font-size: var(--fs-normmid);
     font-family: var(--ff-serif);
+    overflow:auto
 }
 .books-text > p {
     &:not(:last-child){margin-bottom: 50px;}
 }
+
 
 /*
 contact page
@@ -472,7 +479,7 @@ contact page
 .contact-text p {
   color: var(--dark);
   font-family: var(--ff-serif);
-  font-size: var(--fs-normal);
+  font-size: var(--fs-normmid);
   margin-bottom: 20px;
 }
 
@@ -482,5 +489,53 @@ phones
 @media (max-width: 850px) {
   .hide {
     display: none !important;
+  }
+}
+
+@media screen and (max-width: 60em){
+  .home-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 90%;
+    border: solid 2px var(--satgrey);
+    padding: 30px;
+  }
+  .home-img {
+    position: relative;
+    max-height: 60%;
+    top: 0;
+    right: 0;
+  }
+  .home-left {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 10px 30px;
+  }
+  .home-title{
+    text-align: center;
+    font-size: var(--fs-bigdgest);
+  }
+  .bregg{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 55em){
+  .books-content{
+    padding: 30px 50px;
+  }
+  .books-image{
+    max-height: 50%;
+  }
+}
+
+@media screen and (max-width: 40em){
+  
+  .home-title{
+    text-align: center;
+    font-size: var(--fs-bigger);
   }
 }
